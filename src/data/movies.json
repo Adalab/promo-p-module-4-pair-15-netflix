@@ -1,4 +1,6 @@
-[
+ {
+   "success": true,
+  "movies": [
   {
     "id": "1",
     "title": "Gambita de dama",
@@ -10,5 +12,12 @@
     "title": "Friends",
     "gender": "Comedia",
     "image": "//beta.adalab.es/curso-intensivo-fullstack-recursos/apis/netflix-v1/images/friends.jpg"
+  },
+   {
+    "id": "3",
+    "title": "Dexter",
+    "gender": "Drama",
+    "image": "https://es.web.img3.acsta.net/pictures/14/03/05/11/49/010324.jpg"
   }
 ]
+}

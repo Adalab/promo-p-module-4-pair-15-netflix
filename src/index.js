@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const movies = require("./data/movies.json");
+const data = require('./data/movies.json');
 
 // create and config server
 const server = express();
@@ -14,7 +14,17 @@ server.listen(serverPort, () => {
 });
 
 // Recuperar todas las peliculas del catálogo de Netflix
-server.get("/movies", (req, res) => {
-  console.log("Ha pasao por aqui.");
-  res.send(movies);
+server.get('/movies', (req, res) => {
+  console.log('Ha pasao por aqui.');
+  console.log(req.query.gender);
+  const genderFilterParam = req.query.gender;
+  let response = {};
+  if (genderFilterParam === undefined) {
+    res.json({ success: false });
+  } else {
+    const filterGenderMovies = data.movies.filter(
+      (movie) => movie.gender === genderFilterParam
+    );
+    res.json({ success: true, movies: filterGenderMovies });
+  }
 });
