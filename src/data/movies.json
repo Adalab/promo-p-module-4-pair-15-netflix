@@ -1,23 +1,23 @@
  {
    "success": true,
   "movies": [
-  {
-    "id": "1",
-    "title": "Gambita de dama",
-    "gender": "Drama",
-    "image": "//beta.adalab.es/curso-intensivo-fullstack-recursos/apis/netflix-v1/images/gambito-de-dama.jpg"
-  },
-  {
-    "id": "2",
-    "title": "Friends",
-    "gender": "Comedia",
-    "image": "//beta.adalab.es/curso-intensivo-fullstack-recursos/apis/netflix-v1/images/friends.jpg"
-  },
-   {
-    "id": "3",
-    "title": "Dexter",
-    "gender": "Drama",
-    "image": "https://es.web.img3.acsta.net/pictures/14/03/05/11/49/010324.jpg"
-  }
-]
+    {
+      "id": "1",
+      "title": "Gambita de dama",
+      "gender": "Drama",
+      "image": "//localhost:4000/gambita-de-dama.jpg"
+    },
+    {
+      "id": "2",
+      "title": "Friends",
+      "gender": "Comedia",
+      "image": "//localhost:4000/friends.jpg"
+    },
+    {
+      "id": "3",
+      "title": "Dexter",
+      "gender": "Drama",
+      "image": "//localhost:4000/dexter.jpeg"
+    }
+  ]
 }
