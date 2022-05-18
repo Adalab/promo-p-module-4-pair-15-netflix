@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const data = require('./data/movies.json');
+const users = require('./data/users.json');
 
 // create and config server
 const server = express();
@@ -14,9 +15,7 @@ server.listen(serverPort, () => {
 });
 
 // Recuperar todas las peliculas del catálogo de Netflix
-server.get("/movies", (req, res) => {
-  console.log("Ha pasao por aqui.");
-  console.log(req.query.gender);
+server.get('/movies', (req, res) => {
   const genderFilterParam = req.query.gender;
 
   let response = {};
@@ -24,7 +23,7 @@ server.get("/movies", (req, res) => {
     res.json({ success: false });
   } else {
     const filterGenderMovies = data.movies.filter((movie) => {
-      if (genderFilterParam === "") {
+      if (genderFilterParam === '') {
         return true;
       }
       return movie.gender === genderFilterParam;
@@ -33,8 +32,23 @@ server.get("/movies", (req, res) => {
   }
 });
 
-const staticServerPathWeb = "./src/public-react"; // En esta carpeta ponemos los ficheros estáticos
+server.post('/login', (req, res) => {
+  const userFind = users.find(
+    (user) =>
+      user.email === req.body.email && user.password === req.body.password
+  );
+  if (userFind !== undefined) {
+    return res.json({ success: true, userId: userFind.id });
+  } else {
+    return res.json({
+      success: false,
+      errorMessage: 'Usuaria/o no encontrada/o',
+    });
+  }
+});
+
+const staticServerPathWeb = './src/public-react'; // En esta carpeta ponemos los ficheros estáticos
 server.use(express.static(staticServerPathWeb));
 
-const staticServerImages = "./src/public-movies-images"; // En esta carpeta ponemos los ficheros estáticos
+const staticServerImages = './src/public-movies-images'; // En esta carpeta ponemos los ficheros estáticos
 server.use(express.static(staticServerImages));
