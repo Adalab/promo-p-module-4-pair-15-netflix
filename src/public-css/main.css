@@ -1,0 +1,27 @@
+.containmovie {
+    height: 400px;
+    width: 300px;
+    border: 2px solid rgb(39, 159, 119);
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+.card__img{
+    height: 300px;
+    width: 180px;
+        margin-top: 20px;
+}
+
+.card__title{
+    color: aquamarine;
+}
+
+.card__description{
+    color: rgb(128, 192, 172);
+}
+
