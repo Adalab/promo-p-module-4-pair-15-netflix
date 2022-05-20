@@ -143,7 +143,8 @@ const App = () => {
   Recargamos la página para que se borren todos los datos del estado de React.
   */
   const logout = () => {
-    router.redirect('/');
+    localStorage.removeItem("user");
+    router.redirect("/");
     router.reload();
   };
 

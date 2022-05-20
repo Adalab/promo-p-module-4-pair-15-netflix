@@ -90,6 +90,33 @@ server.get('/movie/:movieId', (req, res) => {
   res.render('movie', movieList);
 });
 
+server.post("/singup", (req, res) => {
+  // const newUser = query.get(req.body.email, req.body.password);
+  console.log(req.body.email, req.body.password);
+  const query = db.prepare(
+    `SELECT  * FROM users WHERE email = ? AND password = ? `
+  );
+  //Ejecuto la sentencia SQL
+  const emailRegister = query.get(req.body.email, req.body.password);
+
+  if (emailRegister !== undefined) {
+    return res.json({
+      success: false,
+      msj: "La usuaria ya existe",
+    });
+  } else {
+    const insertUser = db.prepare(
+      `INSERT INTO users (email, password) VALUES(?, ?) `
+    );
+    const resultInsert = insertUser.run(email, password);
+    return res.json({
+      success: true,
+      msj: "Usuaria creada",
+      userId: resultInsert.lastInsertRowid,
+    });
+  }
+});
+
 const staticServerPathWeb = './src/public-react'; // En esta carpeta ponemos los ficheros estáticos
 server.use(express.static(staticServerPathWeb));
 
